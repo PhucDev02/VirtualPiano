@@ -71,6 +71,8 @@ public class Pentatonic extends javax.swing.JDialog implements KeyListener {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jPanel1.setName("Pentatonic"); // NOI18N
+
         jButton1.setText("A");
         jButton1.setFocusable(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -244,6 +246,7 @@ public class Pentatonic extends javax.swing.JDialog implements KeyListener {
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
                         .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -395,7 +398,7 @@ public class Pentatonic extends javax.swing.JDialog implements KeyListener {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
-        if (pitch <= 11) {
+        if (pitch <= 23) {
             pitch += 1;
         }
         jLabel1.setText("Pitch : " + pitch);
