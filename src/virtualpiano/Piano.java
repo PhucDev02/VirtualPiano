@@ -5,8 +5,10 @@
 package virtualpiano;
 
 import java.awt.Color;
+import java.awt.Desktop;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import javax.sound.midi.MidiChannel;
@@ -27,12 +29,12 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
     MidiChannel[] mc;
     int pitch;
     private String keys = "ZXCVBNM,./ASDFGHJKL;QWERTYUIOP1234567890-";
-
+    
     private boolean[] keyOn = new boolean[keys.length()];
 //    private boolean C,D,Dm,E,F,G,A,B,Am,Em; 
     Map<Integer, Integer> map;
     Map<Integer, JButton> mapButton;
-
+    
     public Piano(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -42,7 +44,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
         map = new HashMap<Integer, Integer>();
         mapButton = new HashMap<Integer, JButton>();
         initMap();
-
+        
         pitch = 0;
         try {
             synth = MidiSystem.getSynthesizer();
@@ -52,12 +54,12 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
             System.out.println(e.toString());
         }
     }
-
+    
     @Override
     public void keyTyped(KeyEvent e) {
 //        System.out.println(e.toString());
     }
-
+    
     @Override
     public void keyPressed(KeyEvent e) {
         int noteIndex = keys.indexOf((char) e.getKeyCode());
@@ -145,7 +147,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
                     mc[5].noteOn(60 + pitch, 50);
                     mc[5].noteOn(64 + pitch, 50);
                     Amc.setBackground(Color.green);
-
+                    
                     A4.setBackground(Color.green);
                     C4.setBackground(Color.green);
                     E4.setBackground(Color.green);
@@ -168,7 +170,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
                     D4.setBackground(Color.green);
                     F4t.setBackground(Color.green);
                     break;
-
+                
             }
         } else {
             keyOn[noteIndex] = true;
@@ -176,7 +178,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
             mapButton.get(noteIndex).setBackground(Color.green);
         }
     }
-
+    
     @Override
     public void keyReleased(KeyEvent e) {
         int noteIndex = keys.indexOf((char) e.getKeyCode());
@@ -263,7 +265,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
                     mc[5].noteOff(60 + pitch, 100);
                     mc[5].noteOff(64 + pitch, 100);
                     Amc.setBackground(null);
-
+                    
                     A4.setBackground(null);
                     C4.setBackground(null);
                     E4.setBackground(null);
@@ -286,7 +288,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
                     D4.setBackground(null);
                     F4t.setBackground(C3t.getBackground());
                     break;
-
+                
             }
         } else {
             keyOn[noteIndex] = false;
@@ -373,6 +375,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
         Ac = new javax.swing.JButton();
         Amc = new javax.swing.JButton();
         Bc = new javax.swing.JButton();
+        jTabbedPane3 = new javax.swing.JTabbedPane();
         SheetView = new javax.swing.JPanel();
         c = new javax.swing.JButton();
         x = new javax.swing.JButton();
@@ -428,7 +431,22 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
         apostrophe = new javax.swing.JButton();
         jButton57 = new javax.swing.JButton();
         jButton58 = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTextArea3 = new javax.swing.JTextArea();
+        jLabel2 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTextArea4 = new javax.swing.JTextArea();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTextArea5 = new javax.swing.JTextArea();
+        jPanel4 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jButton3 = new javax.swing.JButton();
 
         jButton1.setText("jButton1");
 
@@ -1038,7 +1056,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
                 EmcActionPerformed(evt);
             }
         });
-        jPanel1.add(Emc, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 40, 80, 80));
+        jPanel1.add(Emc, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 20, 80, 80));
 
         Bmc.setText("Bm(-)");
         Bmc.setFocusable(false);
@@ -1047,7 +1065,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
                 BmcActionPerformed(evt);
             }
         });
-        jPanel1.add(Bmc, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 40, 80, 80));
+        jPanel1.add(Bmc, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 20, 80, 80));
 
         Dc.setText("D(2)");
         Dc.setFocusable(false);
@@ -1056,7 +1074,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
                 DcActionPerformed(evt);
             }
         });
-        jPanel1.add(Dc, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 80, 80));
+        jPanel1.add(Dc, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 80, 80));
 
         Dmc.setText("Dm(3)");
         Dmc.setFocusable(false);
@@ -1065,7 +1083,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
                 DmcActionPerformed(evt);
             }
         });
-        jPanel1.add(Dmc, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, 80, 80));
+        jPanel1.add(Dmc, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 80, 80));
 
         Ec.setText("E(4)");
         Ec.setFocusable(false);
@@ -1074,7 +1092,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
                 EcActionPerformed(evt);
             }
         });
-        jPanel1.add(Ec, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 40, 80, 80));
+        jPanel1.add(Ec, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, 80, 80));
 
         Cc.setText("C (1)");
         Cc.setFocusable(false);
@@ -1083,7 +1101,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
                 CcActionPerformed(evt);
             }
         });
-        jPanel1.add(Cc, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 80, 80));
+        jPanel1.add(Cc, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 80, 80));
 
         Fc.setText("F(6)");
         Fc.setFocusable(false);
@@ -1092,7 +1110,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
                 FcActionPerformed(evt);
             }
         });
-        jPanel1.add(Fc, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 40, 80, 80));
+        jPanel1.add(Fc, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 20, 80, 80));
 
         Gc.setText("G(7)");
         Gc.setFocusable(false);
@@ -1101,7 +1119,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
                 GcActionPerformed(evt);
             }
         });
-        jPanel1.add(Gc, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 40, 80, 80));
+        jPanel1.add(Gc, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 20, 80, 80));
 
         Ac.setText("A(8)");
         Ac.setFocusable(false);
@@ -1110,7 +1128,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
                 AcActionPerformed(evt);
             }
         });
-        jPanel1.add(Ac, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 40, 80, 80));
+        jPanel1.add(Ac, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 20, 80, 80));
 
         Amc.setText("Am(9)");
         Amc.setFocusable(false);
@@ -1119,7 +1137,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
                 AmcActionPerformed(evt);
             }
         });
-        jPanel1.add(Amc, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 40, 80, 80));
+        jPanel1.add(Amc, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 20, 80, 80));
 
         Bc.setText("B(0)");
         Bc.setFocusable(false);
@@ -1128,7 +1146,9 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
                 BcActionPerformed(evt);
             }
         });
-        jPanel1.add(Bc, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 40, 80, 80));
+        jPanel1.add(Bc, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 20, 80, 80));
+
+        jTabbedPane3.setFocusable(false);
 
         SheetView.setFocusable(false);
         SheetView.setLayout(null);
@@ -1149,7 +1169,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
             }
         });
         SheetView.add(c);
-        c.setBounds(180, 170, 40, 40);
+        c.setBounds(200, 160, 40, 40);
 
         x.setText("X");
         x.setFocusable(false);
@@ -1167,7 +1187,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
             }
         });
         SheetView.add(x);
-        x.setBounds(140, 170, 40, 40);
+        x.setBounds(160, 160, 40, 40);
 
         v.setText("V");
         v.setFocusable(false);
@@ -1180,7 +1200,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
             }
         });
         SheetView.add(v);
-        v.setBounds(220, 170, 40, 40);
+        v.setBounds(240, 160, 40, 40);
 
         b.setText("B");
         b.setFocusable(false);
@@ -1198,7 +1218,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
             }
         });
         SheetView.add(b);
-        b.setBounds(260, 170, 40, 40);
+        b.setBounds(280, 160, 40, 40);
 
         n.setText("N");
         n.setFocusable(false);
@@ -1216,7 +1236,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
             }
         });
         SheetView.add(n);
-        n.setBounds(300, 170, 40, 40);
+        n.setBounds(320, 160, 40, 40);
 
         jButton12.setBackground(new java.awt.Color(153, 153, 153));
         jButton12.setText("Shift");
@@ -1228,7 +1248,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
             }
         });
         SheetView.add(jButton12);
-        jButton12.setBounds(500, 170, 120, 40);
+        jButton12.setBounds(520, 160, 120, 40);
 
         dot.setText(".");
         dot.setFocusable(false);
@@ -1246,7 +1266,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
             }
         });
         SheetView.add(dot);
-        dot.setBounds(420, 170, 40, 40);
+        dot.setBounds(440, 160, 40, 40);
 
         comma.setText(",");
         comma.setFocusable(false);
@@ -1259,7 +1279,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
             }
         });
         SheetView.add(comma);
-        comma.setBounds(380, 170, 40, 40);
+        comma.setBounds(400, 160, 40, 40);
 
         m.setText("M");
         m.setFocusable(false);
@@ -1277,7 +1297,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
             }
         });
         SheetView.add(m);
-        m.setBounds(340, 170, 40, 40);
+        m.setBounds(360, 160, 40, 40);
 
         d.setText("D");
         d.setFocusable(false);
@@ -1295,14 +1315,14 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
             }
         });
         SheetView.add(d);
-        d.setBounds(160, 130, 40, 40);
+        d.setBounds(180, 120, 40, 40);
 
         jButton9.setBackground(new java.awt.Color(153, 153, 153));
         jButton9.setText("CpLk");
         jButton9.setEnabled(false);
         jButton9.setFocusable(false);
         SheetView.add(jButton9);
-        jButton9.setBounds(10, 130, 70, 40);
+        jButton9.setBounds(30, 120, 70, 40);
 
         s.setText("S");
         s.setFocusable(false);
@@ -1320,7 +1340,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
             }
         });
         SheetView.add(s);
-        s.setBounds(120, 130, 40, 40);
+        s.setBounds(140, 120, 40, 40);
 
         f.setText("F");
         f.setFocusable(false);
@@ -1338,7 +1358,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
             }
         });
         SheetView.add(f);
-        f.setBounds(200, 130, 40, 40);
+        f.setBounds(220, 120, 40, 40);
 
         g.setText("G");
         g.setFocusable(false);
@@ -1356,7 +1376,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
             }
         });
         SheetView.add(g);
-        g.setBounds(240, 130, 40, 40);
+        g.setBounds(260, 120, 40, 40);
 
         h.setText("H");
         h.setFocusable(false);
@@ -1374,7 +1394,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
             }
         });
         SheetView.add(h);
-        h.setBounds(280, 130, 40, 40);
+        h.setBounds(300, 120, 40, 40);
 
         jButton20.setBackground(new java.awt.Color(153, 153, 153));
         jButton20.setText("Enter");
@@ -1386,7 +1406,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
             }
         });
         SheetView.add(jButton20);
-        jButton20.setBounds(520, 130, 100, 40);
+        jButton20.setBounds(540, 120, 100, 40);
 
         l.setText("L");
         l.setFocusable(false);
@@ -1404,7 +1424,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
             }
         });
         SheetView.add(l);
-        l.setBounds(400, 130, 40, 40);
+        l.setBounds(420, 120, 40, 40);
 
         k.setText("K");
         k.setFocusable(false);
@@ -1422,7 +1442,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
             }
         });
         SheetView.add(k);
-        k.setBounds(360, 130, 40, 40);
+        k.setBounds(380, 120, 40, 40);
 
         j.setText("J");
         j.setFocusable(false);
@@ -1440,7 +1460,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
             }
         });
         SheetView.add(j);
-        j.setBounds(320, 130, 40, 40);
+        j.setBounds(340, 120, 40, 40);
 
         e.setText("E");
         e.setFocusable(false);
@@ -1458,14 +1478,14 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
             }
         });
         SheetView.add(e);
-        e.setBounds(150, 90, 40, 40);
+        e.setBounds(170, 80, 40, 40);
 
         jButton25.setBackground(new java.awt.Color(153, 153, 153));
         jButton25.setText("tab");
         jButton25.setEnabled(false);
         jButton25.setFocusable(false);
         SheetView.add(jButton25);
-        jButton25.setBounds(10, 90, 60, 40);
+        jButton25.setBounds(30, 80, 60, 40);
 
         w.setText("W");
         w.setFocusable(false);
@@ -1483,7 +1503,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
             }
         });
         SheetView.add(w);
-        w.setBounds(110, 90, 40, 40);
+        w.setBounds(130, 80, 40, 40);
 
         r.setText("R");
         r.setFocusable(false);
@@ -1501,7 +1521,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
             }
         });
         SheetView.add(r);
-        r.setBounds(190, 90, 40, 40);
+        r.setBounds(210, 80, 40, 40);
 
         t.setText("T");
         t.setFocusable(false);
@@ -1519,7 +1539,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
             }
         });
         SheetView.add(t);
-        t.setBounds(230, 90, 40, 40);
+        t.setBounds(250, 80, 40, 40);
 
         y.setText("Y");
         y.setFocusable(false);
@@ -1537,7 +1557,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
             }
         });
         SheetView.add(y);
-        y.setBounds(270, 90, 40, 40);
+        y.setBounds(290, 80, 40, 40);
 
         jButton30.setBackground(new java.awt.Color(153, 153, 153));
         jButton30.setText("\\");
@@ -1549,7 +1569,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
                 }
             });
             SheetView.add(jButton30);
-            jButton30.setBounds(550, 90, 70, 40);
+            jButton30.setBounds(570, 80, 70, 40);
 
             o.setText("O");
             o.setFocusable(false);
@@ -1567,7 +1587,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
                 }
             });
             SheetView.add(o);
-            o.setBounds(390, 90, 40, 40);
+            o.setBounds(410, 80, 40, 40);
 
             i.setText("I");
             i.setFocusable(false);
@@ -1585,7 +1605,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
                 }
             });
             SheetView.add(i);
-            i.setBounds(350, 90, 40, 40);
+            i.setBounds(370, 80, 40, 40);
 
             u.setText("U");
             u.setFocusable(false);
@@ -1603,14 +1623,14 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
                 }
             });
             SheetView.add(u);
-            u.setBounds(310, 90, 40, 40);
+            u.setBounds(330, 80, 40, 40);
 
             jButton34.setBackground(new java.awt.Color(153, 153, 153));
             jButton34.setText("`");
             jButton34.setEnabled(false);
             jButton34.setFocusable(false);
             SheetView.add(jButton34);
-            jButton34.setBounds(10, 50, 40, 40);
+            jButton34.setBounds(30, 40, 40, 40);
 
             two.setText("2");
             two.setFocusable(false);
@@ -1620,7 +1640,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
                 }
             });
             SheetView.add(two);
-            two.setBounds(90, 50, 40, 40);
+            two.setBounds(110, 40, 40, 40);
 
             three.setText("3");
             three.setFocusable(false);
@@ -1630,7 +1650,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
                 }
             });
             SheetView.add(three);
-            three.setBounds(130, 50, 40, 40);
+            three.setBounds(150, 40, 40, 40);
 
             four.setText("4");
             four.setFocusable(false);
@@ -1640,7 +1660,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
                 }
             });
             SheetView.add(four);
-            four.setBounds(170, 50, 40, 40);
+            four.setBounds(190, 40, 40, 40);
 
             five.setText("5");
             five.setFocusable(false);
@@ -1650,7 +1670,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
                 }
             });
             SheetView.add(five);
-            five.setBounds(210, 50, 40, 40);
+            five.setBounds(230, 40, 40, 40);
 
             six.setText("6");
             six.setFocusable(false);
@@ -1660,7 +1680,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
                 }
             });
             SheetView.add(six);
-            six.setBounds(250, 50, 40, 40);
+            six.setBounds(270, 40, 40, 40);
 
             seven.setText("7");
             seven.setFocusable(false);
@@ -1670,7 +1690,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
                 }
             });
             SheetView.add(seven);
-            seven.setBounds(290, 50, 40, 40);
+            seven.setBounds(310, 40, 40, 40);
 
             eight.setText("8");
             eight.setFocusable(false);
@@ -1680,7 +1700,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
                 }
             });
             SheetView.add(eight);
-            eight.setBounds(330, 50, 40, 40);
+            eight.setBounds(350, 40, 40, 40);
 
             nine.setText("9");
             nine.setFocusable(false);
@@ -1690,7 +1710,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
                 }
             });
             SheetView.add(nine);
-            nine.setBounds(370, 50, 40, 40);
+            nine.setBounds(390, 40, 40, 40);
 
             jButton43.setBackground(new java.awt.Color(153, 153, 153));
             jButton43.setText("Backspace");
@@ -1702,7 +1722,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
                 }
             });
             SheetView.add(jButton43);
-            jButton43.setBounds(530, 50, 90, 40);
+            jButton43.setBounds(550, 40, 90, 40);
 
             zero.setText("0");
             zero.setFocusable(false);
@@ -1712,14 +1732,14 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
                 }
             });
             SheetView.add(zero);
-            zero.setBounds(410, 50, 40, 40);
+            zero.setBounds(430, 40, 40, 40);
 
             jButton45.setBackground(new java.awt.Color(153, 153, 153));
             jButton45.setText("Shift");
             jButton45.setEnabled(false);
             jButton45.setFocusable(false);
             SheetView.add(jButton45);
-            jButton45.setBounds(10, 170, 90, 40);
+            jButton45.setBounds(30, 160, 90, 40);
 
             z.setText("Z");
             z.setFocusable(false);
@@ -1737,17 +1757,17 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
                 }
             });
             SheetView.add(z);
-            z.setBounds(100, 170, 40, 40);
+            z.setBounds(120, 160, 40, 40);
 
             jButton47.setText("Z");
             jButton47.setFocusable(false);
             SheetView.add(jButton47);
-            jButton47.setBounds(100, 170, 40, 40);
+            jButton47.setBounds(120, 160, 40, 40);
 
             one.setText("1");
             one.setFocusable(false);
             SheetView.add(one);
-            one.setBounds(50, 50, 40, 40);
+            one.setBounds(70, 40, 40, 40);
 
             a.setText("A");
             a.setFocusable(false);
@@ -1760,7 +1780,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
                 }
             });
             SheetView.add(a);
-            a.setBounds(80, 130, 40, 40);
+            a.setBounds(100, 120, 40, 40);
 
             q.setText("Q");
             q.setFocusable(false);
@@ -1773,7 +1793,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
                 }
             });
             SheetView.add(q);
-            q.setBounds(70, 90, 40, 40);
+            q.setBounds(90, 80, 40, 40);
 
             minus.setText("-");
             minus.setFocusable(false);
@@ -1783,7 +1803,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
                 }
             });
             SheetView.add(minus);
-            minus.setBounds(450, 50, 40, 40);
+            minus.setBounds(470, 40, 40, 40);
 
             p.setText("P");
             p.setFocusable(false);
@@ -1801,7 +1821,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
                 }
             });
             SheetView.add(p);
-            p.setBounds(430, 90, 40, 40);
+            p.setBounds(450, 80, 40, 40);
 
             jButton53.setBackground(new java.awt.Color(153, 153, 153));
             jButton53.setText("[");
@@ -1813,7 +1833,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
                 }
             });
             SheetView.add(jButton53);
-            jButton53.setBounds(470, 90, 40, 40);
+            jButton53.setBounds(490, 80, 40, 40);
 
             semicolon.setText(";");
             semicolon.setFocusable(false);
@@ -1831,7 +1851,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
                 }
             });
             SheetView.add(semicolon);
-            semicolon.setBounds(440, 130, 40, 40);
+            semicolon.setBounds(460, 120, 40, 40);
 
             slash.setText("/");
             slash.setFocusable(false);
@@ -1849,7 +1869,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
                 }
             });
             SheetView.add(slash);
-            slash.setBounds(460, 170, 40, 40);
+            slash.setBounds(480, 160, 40, 40);
 
             apostrophe.setBackground(new java.awt.Color(204, 204, 204));
             apostrophe.setText("'");
@@ -1861,7 +1881,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
                 }
             });
             SheetView.add(apostrophe);
-            apostrophe.setBounds(480, 130, 40, 40);
+            apostrophe.setBounds(500, 120, 40, 40);
 
             jButton57.setBackground(new java.awt.Color(153, 153, 153));
             jButton57.setText("]");
@@ -1873,7 +1893,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
                 }
             });
             SheetView.add(jButton57);
-            jButton57.setBounds(510, 90, 40, 40);
+            jButton57.setBounds(530, 80, 40, 40);
 
             jButton58.setBackground(new java.awt.Color(153, 153, 153));
             jButton58.setText("=");
@@ -1885,18 +1905,138 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
                 }
             });
             SheetView.add(jButton58);
-            jButton58.setBounds(490, 50, 40, 40);
+            jButton58.setBounds(510, 40, 40, 40);
 
-            jPanel1.add(SheetView, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 1030, 220));
+            jTabbedPane3.addTab("Bàn phím", SheetView);
 
-            jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chọn bài ", "Happy birthday", "Super Idol" }));
-            jComboBox1.setFocusable(false);
-            jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            jTextArea2.setEditable(false);
+            jTextArea2.setColumns(20);
+            jTextArea2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+            jTextArea2.setRows(5);
+            jTextArea2.setText("Happy [1] Birthday to [7] You ! \n GG          HG        K         J\nHappy [7] Birthday to [1] You !\n  GG         HG         L         K\nHappy [1] Birthday, Happy [6] Birthday\n  GG          TE            QQ\t     JH\nHappy [1] Birthday [7] to [1] You !\n  RR           EQ            W       Q");
+            jTextArea2.setFocusable(false);
+            jScrollPane2.setViewportView(jTextArea2);
+
+            javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+            jPanel3.setLayout(jPanel3Layout);
+            jPanel3Layout.setHorizontalGroup(
+                jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGap(28, 28, 28)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(395, Short.MAX_VALUE))
+            );
+            jPanel3Layout.setVerticalGroup(
+                jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGap(35, 35, 35)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(44, Short.MAX_VALUE))
+            );
+
+            jTabbedPane3.addTab("Happy birthday", jPanel3);
+
+            jTextArea3.setEditable(false);
+            jTextArea3.setColumns(20);
+            jTextArea3.setRows(5);
+            jTextArea3.setText("Super Idol de xiào [F]róng\n  DD    FD  S    D         N\nDōu méi nǐ de [G]tián\n S      A   N  A        S\nDā yuè zhèngwǔ de yáng [Em]guāng\n S   S       D     S   A    S               D\nDōu méi [Am]nǐ yàoyǎn\n A      N         A     A N\nDè'ài yībǎi líng wǔ [F]dù (105°C) de nǐ\n D  D  FD   S    A        D      S        D  N\nDī dī [G]qīngchún de zhēngliú [C]shuǐ\n N  A        M   M     M     D    D        A");
+            jTextArea3.setFocusable(false);
+            jScrollPane3.setViewportView(jTextArea3);
+
+            jLabel2.setText("Để pitch 4 nhé");
+
+            jButton2.setText("Video");
+            jButton2.setFocusable(false);
+            jButton2.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    jComboBox1ActionPerformed(evt);
+                    jButton2ActionPerformed(evt);
                 }
             });
-            jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 100, -1));
+
+            jTextArea4.setEditable(false);
+            jTextArea4.setColumns(20);
+            jTextArea4.setRows(5);
+            jTextArea4.setText("Nǐ [F]bù zhīdào nǐ yǒu duō kě' [G]ài\nB       G   DS      A  S     D    A      S\nDiédǎo hòu huì shǎ [Em]xiàozhe zài zhàn qǐ [Am] lái\n  B  B      B    B     B           D D      S    D    C         B\nNǐ [F]cónglái dōu bù qīng yán shī [G]bài\n B        G D     S    A    S     D    A      S\nDuì mèngxiǎng de zhí [C]zhuó yīzhí bùcéng gēnggǎi\n B        B  B        N   B        D     DS    D K         J G");
+            jTextArea4.setFocusable(false);
+            jScrollPane4.setViewportView(jTextArea4);
+
+            jTextArea5.setEditable(false);
+            jTextArea5.setColumns(20);
+            jTextArea5.setRows(5);
+            jTextArea5.setText("Hěn ān [F]xīn dāng nǐ duì wǒ [G]shuō\n N    M       A      A    M  A   D         S\nBùpà yǒu wǒ [Em]zài\n S S    D     C         B\nFàngzhe ràng wǒ [Am]lái\n  M     M     S    B          N\nYǒnggǎn [F]zhuī  zìjǐ   de mèng [G]xiǎng\n   N    M         A    AM   A       D         S\nNà jiāndìng de mú [C]yàng\n S     S  A     S    S       A\n");
+            jTextArea5.setFocusable(false);
+            jScrollPane5.setViewportView(jTextArea5);
+
+            javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+            jPanel2.setLayout(jPanel2Layout);
+            jPanel2Layout.setHorizontalGroup(
+                jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(211, 211, 211)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addContainerGap(51, Short.MAX_VALUE))
+            );
+            jPanel2Layout.setVerticalGroup(
+                jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                    .addContainerGap(22, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel2)
+                        .addComponent(jButton2))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
+                        .addComponent(jScrollPane4)
+                        .addComponent(jScrollPane5)))
+            );
+
+            jTabbedPane3.addTab("Super Idol", jPanel2);
+
+            jTextArea1.setColumns(20);
+            jTextArea1.setRows(5);
+            jScrollPane1.setViewportView(jTextArea1);
+
+            jButton3.setText("Video");
+            jButton3.setFocusable(false);
+            jButton3.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jButton3ActionPerformed(evt);
+                }
+            });
+
+            javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+            jPanel4.setLayout(jPanel4Layout);
+            jPanel4Layout.setHorizontalGroup(
+                jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel4Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(604, Short.MAX_VALUE))
+            );
+            jPanel4Layout.setVerticalGroup(
+                jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel4Layout.createSequentialGroup()
+                    .addGap(26, 26, 26)
+                    .addComponent(jButton3)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE))
+            );
+
+            jTabbedPane3.addTab("Nối vòng tay lớn", jPanel4);
+
+            jPanel1.add(jTabbedPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 880, 290));
 
             javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
             getContentPane().setLayout(layout);
@@ -2217,15 +2357,6 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
         mc[5].noteOn(64 + pitch, 100);
     }//GEN-LAST:event_AcActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        int index=jComboBox1.getSelectedIndex();
-        if(index ==1 )
-        {
-            SheetView.setVisible(false);
-        }
-        else SheetView.setVisible(true);
-    }//GEN-LAST:event_jComboBox1ActionPerformed
-
     private void jButton58ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton58ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton58ActionPerformed
@@ -2309,7 +2440,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
     }//GEN-LAST:event_qMousePressed
 
     private void aMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aMouseReleased
-
+        
         C5.setBackground(null);
         a.setBackground(null);
     }//GEN-LAST:event_aMouseReleased
@@ -2512,7 +2643,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
     }//GEN-LAST:event_jActionPerformed
 
     private void jMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMouseReleased
-
+        
         B5.setBackground(null);
         j.setBackground(null);
     }//GEN-LAST:event_jMouseReleased
@@ -2544,7 +2675,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
     }//GEN-LAST:event_lActionPerformed
 
     private void lMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lMouseReleased
-
+        
         D6.setBackground(null);
         l.setBackground(null);
     }//GEN-LAST:event_lMouseReleased
@@ -2664,7 +2795,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
     }//GEN-LAST:event_commaMouseReleased
 
     private void commaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_commaMousePressed
-
+        
         C5.setBackground(Color.GREEN);
         comma.setBackground(Color.GREEN);
         mc[5].noteOn(60 + pitch, 50);
@@ -2719,7 +2850,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
     }//GEN-LAST:event_bMouseReleased
 
     private void bMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bMousePressed
-
+        
         G4.setBackground(Color.GREEN);
         b.setBackground(Color.GREEN);
         mc[5].noteOn(55 + pitch, 50);
@@ -2771,6 +2902,14 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
         c.setBackground(Color.GREEN);
         mc[5].noteOn(52 + pitch, 50);
     }//GEN-LAST:event_cMousePressed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        openURL("https://www.youtube.com/watch?v=DKpaKHUlyBY");
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+       openURL("https://www.youtube.com/watch?v=WPrY-R5-D1s");
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2901,8 +3040,10 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton19;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton20;
     private javax.swing.JButton jButton25;
+    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton30;
     private javax.swing.JButton jButton34;
     private javax.swing.JButton jButton43;
@@ -2912,9 +3053,23 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
     private javax.swing.JButton jButton57;
     private javax.swing.JButton jButton58;
     private javax.swing.JButton jButton9;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JTabbedPane jTabbedPane3;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JTextArea jTextArea3;
+    private javax.swing.JTextArea jTextArea4;
+    private javax.swing.JTextArea jTextArea5;
     private javax.swing.JButton k;
     private javax.swing.JButton l;
     private javax.swing.JButton m;
@@ -2954,7 +3109,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
         map.put(7, 60);
         map.put(8, 62);
         map.put(9, 64);
-
+        
         map.put(10, 60);
         map.put(11, 62);
         map.put(12, 64);
@@ -2965,7 +3120,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
         map.put(17, 72);
         map.put(18, 74);
         map.put(19, 76);
-
+        
         map.put(20, 72);
         map.put(21, 74);
         map.put(22, 76);
@@ -3009,6 +3164,13 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
         mapButton.put(27, C7);
         mapButton.put(28, D7);
         mapButton.put(29, E7);
-
+    }
+    
+    public static void openURL(String urlString) {
+        try {
+            Desktop.getDesktop().browse(new URL(urlString).toURI());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
