@@ -4,6 +4,10 @@
  */
 package virtualpiano;
 
+import java.awt.Toolkit;
+import javax.swing.ImageIcon;
+import javax.tools.Tool;
+
 /**
  *
  * @author 84946
@@ -13,9 +17,16 @@ public class App extends javax.swing.JFrame {
     /**
      * Creates new form App
      */
+    ImageIcon logo;
+
     public App() {
         initComponents();
         setLocationRelativeTo(null);
+        try {
+            this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("logo.png")));
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
     }
 
     /**

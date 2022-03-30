@@ -2197,20 +2197,40 @@
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane1" min="-2" pref="259" max="-2" attributes="0"/>
-                              <Component id="jButton3" alignment="0" min="-2" pref="73" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="jButton3" min="-2" pref="73" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="248" max="-2" attributes="0"/>
+                                  <Component id="jLabel3" min="-2" pref="122" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="jScrollPane1" min="-2" pref="391" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="jScrollPane6" min="-2" pref="396" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <EmptySpace pref="604" max="32767" attributes="0"/>
+                          <EmptySpace pref="64" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                          <Component id="jButton3" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" pref="207" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jButton3" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="jScrollPane1" pref="207" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="jScrollPane6" pref="202" max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -2227,6 +2247,7 @@
                       <Properties>
                         <Property name="columns" type="int" value="20"/>
                         <Property name="rows" type="int" value="5"/>
+                        <Property name="text" type="java.lang.String" value="R&#x1eeb;ng n&#xfa;i dang tay n&#x1ed1;i  l&#x1ea1;i   bi&#x1ec3;n      xa.&#xa;   S      H    G      F   S   AN    F        DS&#xa;Ta       &#x111;i v&#xf2;ng tay     l&#x1edb;n m&#xe3;i &#x111;&#x1ec3;     n&#x1ed1;i s&#x1a1;n      h&#xe0;. &#xa; S        S    A      S        G    G   F       H     F       DS&#xa;M&#x1eb7;t     &#x111;&#x1ea5;t  bao    la,  anh     em  ta     v&#x1ec1;&#xa; G        K     H        H    F         F   D      S&#xa;G&#x1eb7;p      nhau m&#x1eeb;ng nh&#x1b0;       b&#xe3;o c&#xe1;t quay     cu&#x1ed3;ng tr&#x1edd;i      r&#x1ed9;ng.&#xa;  S          G       F       G           H     H     F           S       A           N&#xa;B&#xe0;n     tay ta    n&#x1eaf;m n&#x1ed1;i tr&#xf2;n m&#x1ed9;t  v&#xf2;ng Vi&#x1ec7;t Nam &#xa; N         D   D      G    D   SA     A      A      A    S&#xa;"/>
                       </Properties>
                     </Component>
                   </SubComponents>
@@ -2239,6 +2260,27 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
                   </Events>
+                </Component>
+                <Container class="javax.swing.JScrollPane" name="jScrollPane6">
+                  <AuxValues>
+                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                  </AuxValues>
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                  <SubComponents>
+                    <Component class="javax.swing.JTextArea" name="jTextArea6">
+                      <Properties>
+                        <Property name="columns" type="int" value="20"/>
+                        <Property name="rows" type="int" value="5"/>
+                        <Property name="text" type="java.lang.String" value="      C&#x1edd;  n&#x1ed1;i       gi&#xf3; &#x111;&#xea;m vui n&#x1ed1;i    ng&#xe0;y&#xa;      S      H         H      G    G   F         S&#xa;D&#xf2;ng m&#xe1;u    n&#x1ed1;i con tim &#x111;&#x1ed3;ng     lo&#x1ea1;i&#xa;  S       F         F     D   D    A          A&#xa;D&#x1ef1;ng t&#xec;nh       ng&#x1b0;&#x1edd;i trong ng&#xe0;y      m&#x1edb;i&#xa;   N      N              N       S       A           D&#xa;Th&#xe0;nh ph&#x1ed1;     n&#x1ed1;i th&#xf4;n xa v&#x1edd;i         v&#x1ee3;i&#xa;     S      H         H      G    G   F        S&#xa;Ng&#x1b0;&#x1edd;i ch&#x1ebf;t     n&#x1ed1;i linh thi&#xea;ng v&#xe0;o      &#x111;&#x1edd;i&#xa;    S       F         F    D   D        A          A&#xa;V&#xe0; n&#x1ee5;       c&#x1b0;&#x1edd;i n&#x1edf; tr&#xea;n         m&#xf4;i&#xa; N   N           N     F    D           S"/>
+                      </Properties>
+                    </Component>
+                  </SubComponents>
+                </Container>
+                <Component class="javax.swing.JLabel" name="jLabel3">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Pitch -3"/>
+                  </Properties>
                 </Component>
               </SubComponents>
             </Container>

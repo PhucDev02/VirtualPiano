@@ -37,7 +37,7 @@ public class Pentatonic extends javax.swing.JDialog implements KeyListener {
             System.out.println(e.toString());
         }
         pitch = 0;
-
+        this.setTitle("Pentatonic");
     }
 
     /**

@@ -447,6 +447,9 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jButton3 = new javax.swing.JButton();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jTextArea6 = new javax.swing.JTextArea();
+        jLabel3 = new javax.swing.JLabel();
 
         jButton1.setText("jButton1");
 
@@ -2004,6 +2007,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
 
             jTextArea1.setColumns(20);
             jTextArea1.setRows(5);
+            jTextArea1.setText("Rừng núi dang tay nối  lại   biển      xa.\n   S      H    G      F   S   AN    F        DS\nTa       đi vòng tay     lớn mãi để     nối sơn      hà. \n S        S    A      S        G    G   F       H     F       DS\nMặt     đất  bao    la,  anh     em  ta     về\n G        K     H        H    F         F   D      S\nGặp      nhau mừng như       bão cát quay     cuồng trời      rộng.\n  S          G       F       G           H     H     F           S       A           N\nBàn     tay ta    nắm nối tròn một  vòng Việt Nam \n N         D   D      G    D   SA     A      A      A    S\n");
             jScrollPane1.setViewportView(jTextArea1);
 
             jButton3.setText("Video");
@@ -2014,6 +2018,13 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
                 }
             });
 
+            jTextArea6.setColumns(20);
+            jTextArea6.setRows(5);
+            jTextArea6.setText("      Cờ  nối       gió đêm vui nối    ngày\n      S      H         H      G    G   F         S\nDòng máu    nối con tim đồng     loại\n  S       F         F     D   D    A          A\nDựng tình       người trong ngày      mới\n   N      N              N       S       A           D\nThành phố     nối thôn xa vời         vợi\n     S      H         H      G    G   F        S\nNgười chết     nối linh thiêng vào      đời\n    S       F         F    D   D        A          A\nVà nụ       cười nở trên         môi\n N   N           N     F    D           S");
+            jScrollPane6.setViewportView(jTextArea6);
+
+            jLabel3.setText("Pitch -3");
+
             javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
             jPanel4.setLayout(jPanel4Layout);
             jPanel4Layout.setHorizontalGroup(
@@ -2021,17 +2032,31 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
                 .addGroup(jPanel4Layout.createSequentialGroup()
                     .addContainerGap()
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(604, Short.MAX_VALUE))
+                        .addGroup(jPanel4Layout.createSequentialGroup()
+                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(248, 248, 248)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel4Layout.createSequentialGroup()
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addContainerGap(64, Short.MAX_VALUE))
             );
             jPanel4Layout.setVerticalGroup(
                 jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel4Layout.createSequentialGroup()
-                    .addGap(26, 26, 26)
-                    .addComponent(jButton3)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE))
+                    .addGap(13, 13, 13)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton3)
+                        .addComponent(jLabel3))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel4Layout.createSequentialGroup()
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+                            .addGap(7, 7, 7))
+                        .addGroup(jPanel4Layout.createSequentialGroup()
+                            .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
+                            .addContainerGap())))
             );
 
             jTabbedPane3.addTab("Nối vòng tay lớn", jPanel4);
@@ -3055,6 +3080,7 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -3064,12 +3090,14 @@ public class Piano extends javax.swing.JDialog implements KeyListener {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextArea jTextArea3;
     private javax.swing.JTextArea jTextArea4;
     private javax.swing.JTextArea jTextArea5;
+    private javax.swing.JTextArea jTextArea6;
     private javax.swing.JButton k;
     private javax.swing.JButton l;
     private javax.swing.JButton m;
